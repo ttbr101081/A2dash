@@ -1,9 +1,9 @@
 <?php 	
 
-$localhost = "127.0.0.1";
+$localhost = "localhost";
 $username = "root";
 $password = "";
-$dbname = "pos_stock";
+$dbname = "promo";
 
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);

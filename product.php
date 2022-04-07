@@ -26,11 +26,12 @@
 					<thead>
 						<tr>
 						<th>ID producto</th>
+						<th style="width:10%;">Imagen</th>
 						<th>Nombre del producto</th>
 							
 							<th>Categoria</th>
-							<th>Favorito</th>
 							<th>Estado</th>
+							<th>Favorito</th>
 							
 							<th style="width:15%;">Opciones</th>
 						</tr>

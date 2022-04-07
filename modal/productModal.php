@@ -13,18 +13,17 @@
 
 	      	<div id="add-product-messages"></div>
 
-	      	<!--<div class="form-group">
+	      	<div class="form-group">
 	        	<label for="productImage" class="col-sm-3 control-label">Imagen: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-					    <!-- the avatar markup 
 							<div id="kv-avatar-errors-1" class="center-block" style="display:none;"></div>							
 					    <div class="kv-avatar center-block">					        
 					        <input type="file" class="form-control" id="productImage" placeholder="Imagen del producto" name="productImage" class="file-loading" style="width:auto;"/>
 					    </div>
 				      
 				    </div>
-	        </div> <!-- /form-group-->	     	           	       
+	        </div> 	           	       
 
 	        <div class="form-group">
 	        	<label for="productName" class="col-sm-3 control-label">Nombre: </label>
@@ -35,10 +34,21 @@
 	        </div> <!-- /form-group-->	    
 
 	        <div class="form-group">
-	        	<label for="quantity" class="col-sm-3 control-label">Categoria: </label>
+	        	<label for="category" class="col-sm-3 control-label">Categoria: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="quantity" placeholder="Stock" name="quantity" autocomplete="off">
+					<select class="form-control" id="categoryName" name="categoryName">
+				      	<option value="">-- Selecciona --</option>-->
+				      	<?php 
+				      		$sql = "SELECT categories_id, categories_name, categories_active, categories_status FROM categories WHERE categories_status = 1 AND categories_active = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+				      	?>
+				      </select>
+				      <!--<input type="text" class="form-control" id="category" placeholder="Stock" name="category" autocomplete="off">-->
 				    </div>
 	        </div> <!-- /form-group-->	        	 
 
@@ -48,26 +58,26 @@
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control" id="rate" placeholder="Precio" name="rate" autocomplete="off">
 				    </div>
-	        </div> <!-- /form-group-->	     	        
+	        </div> /form-group-->	     	        
 
-	        <div class="form-group">
+	        <!--<div class="form-group">
 	        	<label for="brandName" class="col-sm-3 control-label">Favorito: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
 				      <select class="form-control" id="brandName" name="brandName">
-				      	<option value="">-- Selecciona --</option>
+				      	<option value="">-- Selecciona --</option>-->
 				      	<?php 
-				      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
-								$result = $connect->query($sql);
+				      	//$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
+								//$result = $connect->query($sql);
 
-								while($row = $result->fetch_array()) {
-									echo "<option value='".$row[0]."'>".$row[1]."</option>";
-								} // while
+								//while($row = $result->fetch_array()) {
+									//echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								//} // while
 								
 				      	?>
-				      </select>
+				      <!--</select>
 				    </div>
-	        </div> <!-- /form-group-->	
+	        </div> /form-group-->	
 
 	        <!-- /form-group-->					        	         	       
 
@@ -114,13 +124,13 @@
 
 	      	<div class="div-result">
 
-				  <!-- Nav tabs 
+				  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs" role="tablist">
-				    <!--<li role="presentation" class="active"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Imagen</a></li>
+				    <li role="presentation" class="active"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Imagen</a></li>
 				    <li role="presentation">Información del producto</li>    
 				  </ul>
 
-				  <!-- Tab panes 
+				  <!--Tab panes 
 				  <div class="tab-content">
 
 				  	
@@ -136,31 +146,31 @@
 						    <div class="col-sm-8">							    				   
 						      <img src="" id="getProductImage" class="thumbnail" style="width:250px; height:250px;" />
 						    </div>
-			        </div> <!-- /form-group    	           	       
+			        </div> /form-group    	           	       
 				    	
 			      	<div class="form-group">
 			        	<label for="editProductImage" class="col-sm-3 control-label">Selecciona imagen: </label>
 			        	<label class="col-sm-1 control-label">: </label>
 						    <div class="col-sm-8">
-							    <!-- the avatar markup
+							    the avatar markup
 									<div id="kv-avatar-errors-1" class="center-block" style="display:none;"></div>							
 							    <div class="kv-avatar center-block">					        
 							        <input type="file" class="form-control" id="editProductImage" placeholder="Product Name" name="editProductImage" class="file-loading" style="width:auto;"/>
 							    </div>
 						      
 						    </div>
-			        </div> <!-- /form-group       	       
+			        </div>  /form-group       	       
 
 			        <div class="modal-footer editProductPhotoFooter">
 				        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Cerrar</button>
 				        
-				        <!-- <button type="submit" class="btn btn-success" id="editProductImageBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button> 
+				         <button type="submit" class="btn btn-success" id="editProductImageBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button> 
 				      </div>
-				      <!-- /modal-footer 
+				       /modal-footer 
 				      </form>
-				      <!-- /form 
+				       /form 
 				    </div>
-				    <!-- product image 
+				     product image 
 				    <div role="tabpanel" class="tab-pane" id="productInfo">
 				    	<form class="form-horizontal" id="editProductForm" action="php_action/editProduct.php" method="POST">				    
 				    	<br />-->	    
@@ -189,26 +199,26 @@
 						    <div class="col-sm-8">
 						      <input type="text" class="form-control" id="editRate" placeholder="Precio" name="editRate" autocomplete="off">
 						    </div>
-			        </div> <!-- /form-group-->	     	        
+			        </div> /form-group-->	     	        
 
-			        <div class="form-group">
+			        <!--<div class="form-group">
 			        	<label for="editBrandName" class="col-sm-3 control-label">Fabricante: </label>
 			        	<label class="col-sm-1 control-label">: </label>
 						    <div class="col-sm-8">
 						      <select class="form-control" id="editBrandName" name="editBrandName">
 						      	<option value="">-- Selecciona --</option>
 						      	<?php 
-						      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
+						      	/*$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
 										$result = $connect->query($sql);
 
 										while($row = $result->fetch_array()) {
 											echo "<option value='".$row[0]."'>".$row[1]."</option>";
 										} // while
-										
+									*/	
 						      	?>
 						      </select>
 						    </div>
-			        </div> <!-- /form-group-->	
+			        </div>  /form-group-->	
 
 			        <div class="form-group">
 			        	<label for="editCategoryName" class="col-sm-3 control-label">Categoría: </label>
